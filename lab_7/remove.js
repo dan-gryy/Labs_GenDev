@@ -11,7 +11,7 @@ let array = [
   "London",
 ];
 const removeElement = (arr, item) => {
-  return arr.filter((element) => element !== item);
+  return arr.filter(element => element !== item);
 };
 array = removeElement(array, "Saratov"); // Видаляє місто Саратов
 array = removeElement(array, "Paris"); // Не видаляє Париж, адже його немає в масиві
