@@ -19,4 +19,4 @@ const iface = {
     return [x, y, z];
   },
 };
-console.log(methods(iface));
+console.table(methods(iface));
