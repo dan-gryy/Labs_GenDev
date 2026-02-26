@@ -1,3 +1,13 @@
+function* colorCycle(colors) {
+  let i = 0;
+  while (true) {
+    yield colors[i];
+    i = (i + 1) % colors.length;
+  }
+}
+
+const gen = colorCycle(["red", "green", "blue"]);
+runWithTimeout(gen, 3);
 function runWithTimeout(iterator, seconds) {
   const end = Date.now() + seconds * 1000;
   let i = 1;
@@ -15,14 +25,3 @@ function runWithTimeout(iterator, seconds) {
     i++;
   }
 }
-
-function* colorCycle(colors) {
-  let i = 0;
-  while (true) {
-    yield colors[i];
-    i = (i + 1) % colors.length;
-  }
-}
-
-const gen = colorCycle(["red", "green", "blue"]);
-runWithTimeout(gen, 3);
