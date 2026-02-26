@@ -7,7 +7,7 @@ function runWithTimeout(iterator, seconds) {
 
     if (typeof value === "string") {
       const now = new Date().toLocaleTimeString();
-      console.log(`[${now}] Iter ${i}: %c${value}`, `color: ${value}`);
+      console.log(`[${now}] Iter ${i}:`, `color: ${value}`);
     } else {
       console.log(i, value);
     }
