@@ -1,7 +1,10 @@
 function* colorCycle(colors) {
   let i = 0;
   while (true) {
-    yield colors[i];
+    const color = colors[i];
+    if (predicate(color)) {
+      yield color;
+    }
     i = (i + 1) % colors.length;
   }
 }
