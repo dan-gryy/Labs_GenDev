@@ -1,0 +1,8 @@
+{
+  "name": "lab1-2-demo",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "lab1-2": "file:../.."
+  }
+}
