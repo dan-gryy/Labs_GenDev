@@ -1,0 +1,5 @@
+Working with files in JavaScript can be more efficient using streams
+Instead of loading everything into memory, data can be processed step by step
+This is especially useful when dealing with large files
+Async iteration helps handle each line in a simple way
+Some lines are short, others are slightly longer for testing
