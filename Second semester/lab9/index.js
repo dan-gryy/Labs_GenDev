@@ -1,29 +1,55 @@
 import { log } from "./logger.js";
 
-class MathService {
+class UserService {
   constructor() {
-    this.sum = log("INFO", "console")(this.sum, "sum");
-    this.divide = log("ERROR", "file")(this.divide, "divide");
+    this.getUser = log({
+      level: "INFO",
+      output: "console",
+      formatter: (data) => `CUSTOM LOG -> ${data.name} is executing!`,
+    })(this.getUser, "getUser");
+
+    this.loadData = log({
+      level: "INFO",
+      output: "file",
+      json: true,
+    })(this.loadData, "loadData");
+
+    this.makeError = log({
+      level: "ERROR",
+      output: "service",
+      onlyErrors: true,
+    })(this.makeError, "makeError");
   }
 
-  sum(a, b) {
-    return a + b;
+  getUser(name) {
+    return { name, age: 18 };
   }
 
-  divide(a, b) {
-    if (b === 0) {
-      throw new Error("Cannot divide by zero");
-    }
-    return a / b;
+  async loadData() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve("Data loaded");
+      }, 500);
+    });
+  }
+
+  makeError() {
+    throw new Error("Test error");
   }
 }
 
-const service = new MathService();
+const service = new UserService();
 
-console.log(service.sum(5, 7));
+async function run() {
+  console.log(service.getUser("Ilya"));
 
-try {
-  service.divide(10, 0);
-} catch (e) {
-  console.log("Error caught in main");
+  await service.loadData();
+
+  try {
+    service.makeError();
+  } catch (e) {
+    console.log("Error saved to service.txt");
+  }
 }
+
+run();
